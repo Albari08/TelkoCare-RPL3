@@ -1,0 +1,54 @@
+.root {
+  position: relative;
+  width: 927.8422px;
+  height: 200px;
+  align-items: flex-start;
+}
+.telkoCare {
+  position: absolute;
+  left: 24.0343%;
+  right: 0;
+  top: 26%;
+  bottom: 20%;
+  overflow: visible;
+}
+.icon {
+  width: 100%;
+  height: 100%;
+}
+.ellipse246 {
+  position: absolute;
+  left: 0;
+  right: 78.4446%;
+  top: 0;
+  bottom: 0;
+  overflow: visible;
+}
+.icon2 {
+  width: 100%;
+  height: 100%;
+}
+.line2 {
+  transform-origin: bottom left;
+  position: absolute;
+  left: 5.4966%;
+  right: 84.2646%;
+  top: 30.5%;
+  bottom: 64.5%;
+  max-width: 100%;
+  max-height: 100%;
+  outline: solid 5px #f00;
+  transform: matrix(1, 0, 0, 1, 0, 0);
+}
+.line3 {
+  transform-origin: bottom left;
+  position: absolute;
+  left: 10.131%;
+  right: 80.4918%;
+  top: 29%;
+  bottom: 66%;
+  max-width: 100%;
+  max-height: 100%;
+  outline: solid 5px #f00;
+  transform: matrix(-0.0115, 0.9999, -0.9999, -0.0115, 0, 0);
+}
