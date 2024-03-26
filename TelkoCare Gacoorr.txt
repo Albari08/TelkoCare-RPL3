@@ -1,1 +1,3 @@
-TelkoCare Gacoorr
+Rekam Medis
+
+Pelanggan dapat melihat data rekam medis berdasarkan kunjungan ke klinik sebelumnya
