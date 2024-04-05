@@ -31,7 +31,7 @@
             </button>
         </div>
         <nav class="text-white text-base font-semibold pt-3">
-            <a href="{{ route('dashboard') }}" class="{{ route::is('dashboard') ? 'active-nav-link' : '' }} flex items-center text-white py-4 pl-6 nav-item">
+            <a href="{{ route('dashboard') }}" class="{{ Route::is('dashboard') ? 'active-nav-link' : '' }} flex items-center text-white py-4 pl-6 nav-item">
                 <i class="fas fa-tachometer-alt mr-3"></i>
                 Dashboard
             </a>
@@ -51,7 +51,7 @@
                 <i class="fas fa-tablet-alt mr-3"></i>
                 Tabbed Content
             </a>
-            <a href="/dashboard/calendar" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+            <a href="{{ route('calendar') }}" class="{{ Route::is('calendar') ? 'active-nav-link' : '' }} flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
                 <i class="fas fa-calendar mr-3"></i>
                 Calendar
             </a>

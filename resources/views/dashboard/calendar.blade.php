@@ -14,7 +14,6 @@
         <h1 class="text-3xl text-black pb-6">Calendar</h1>
 
         <div class="w-full">
-            <!-- source: https://tailwindcomponents.com/component/calendar-ui-with-tailwindcss-and-alpinejs -->
             <div class="antialiased sans-serif bg-gray-100">
                 <div x-data="app()" x-init="[initDate(), getNoOfDays()]" x-cloak>
                     <div class="container py-2">
@@ -150,14 +149,11 @@
                     </div>
                 </div>
             </div>
-            <p class="py-6 text-gray-500">
-                Source: <a href="https://tailwindcomponents.com/component/calendar-ui-with-tailwindcss-and-alpinejs" class="underline">https://tailwindcomponents.com/component/calendar-ui-with-tailwindcss-and-alpinejs</a>
-            </p>
         </div>
     </main>
 
     <footer class="w-full bg-white text-right p-4">
-        Built by <a target="_blank" href="https://davidgrzyb.com" class="underline">David Grzyb</a>.
+
     </footer>
 </div>
 
