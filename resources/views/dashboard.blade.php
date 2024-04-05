@@ -97,7 +97,7 @@
                 </a>
                 <a href="blank.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
                     <i class="fas fa-sticky-note mr-3"></i>
-                    Blank 
+                    Blank
                 </a>
                 <a href="tables.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
                     <i class="fas fa-table mr-3"></i>
@@ -135,7 +135,7 @@
                 <i class="fas fa-plus mr-3"></i> New Report
             </button> -->
         </header>
-        
+
         @yield('content')
 
         <!-- AlpineJS -->
@@ -144,5 +144,8 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
         <!-- ChartJS -->
         {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin="anonymous"></script> --}}
+    <div>
+        <h>fitur antrian disini</title>
+    </div>
 </body>
 </html>

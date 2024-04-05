@@ -20,3 +20,4 @@ Route::get('/', function () {
 Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::get('dashboard/calendar', [CalendarController::class, 'index'])->name('calendar');
+Route::get('antrian', [DashboardController::class, 'index'])->name('dashboard');
