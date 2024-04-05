@@ -3,6 +3,10 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+<<<<<<< HEAD
+=======
+use Illuminate\Support\Facades\Hash;
+>>>>>>> 1b42c082574ea02bfddf49eb0413feacb40a2cac
 use Illuminate\Support\Str;
 
 /**
@@ -11,6 +15,14 @@ use Illuminate\Support\Str;
 class UserFactory extends Factory
 {
     /**
+<<<<<<< HEAD
+=======
+     * The current password being used by the factory.
+     */
+    protected static ?string $password;
+
+    /**
+>>>>>>> 1b42c082574ea02bfddf49eb0413feacb40a2cac
      * Define the model's default state.
      *
      * @return array<string, mixed>
@@ -21,7 +33,11 @@ class UserFactory extends Factory
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
+<<<<<<< HEAD
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+=======
+            'password' => static::$password ??= Hash::make('password'),
+>>>>>>> 1b42c082574ea02bfddf49eb0413feacb40a2cac
             'remember_token' => Str::random(10),
         ];
     }
