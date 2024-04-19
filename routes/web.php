@@ -1,23 +1,24 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\CalendarController;
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
+|
+*/
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
-
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// });
-
-
-// Route::get('/dashboard/calendar', function () {
-//     return view('/dashboard/calendar');
-// });
-
-Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
-
-Route::get('dashboard/calendar', [CalendarController::class, 'index'])->name('calendar');
-Route::get('antrian', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/antrian/{folder}/{page}', function ($folder, $page) {
+    return view("antrian.$folder.$page");
+});
+Route::get('/{folder}/{page}', function ($folder, $page) {
+    return view("$folder.$page");
+});
