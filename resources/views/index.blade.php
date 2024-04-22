@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>TelkoCare</title>
+    @vite('resources/css/app.css')
 </head>
 <body>
-    <H1>FITUR ANTRIAN DISINI</H1>
+    <h1 class="text-3xl font-bold underline">
+    Hello world!
+  </h1>
 </body>
 </html>
-<div>
-
-</div>
