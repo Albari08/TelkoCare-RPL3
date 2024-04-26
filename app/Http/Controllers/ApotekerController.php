@@ -3,78 +3,88 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash; // Import Hash untuk mengenkripsi kata sandi baru
-use App\Models\Apoteker; // Import model Apoteker
-use App\Models\Penjualan; // Import model Penjualan
+use App\Models\Apoteker;
 
 class ApotekerController extends Controller
 {
-    // Metode untuk menampilkan halaman profil apoteker
     public function profile()
     {
-        // Logika untuk menampilkan halaman profil apoteker
+        // Ambil data apoteker dari database
+        $apoteker = Apoteker::findOrFail(auth()->user()->id); // Anda mungkin perlu menyesuaikan cara pengambilan data apoteker dengan sistem autentikasi yang digunakan
+
+        // Tampilkan view dengan data apoteker
+        return view('apoteker.profile', compact('apoteker'));
     }
 
-    // Metode untuk memperbaharui jadwal operasional apotek
-    public function updateSchedule(Request $request)
+    public function editProfile()
     {
-        // Logika untuk memperbaharui jadwal operasional apotek
+        // Ambil data apoteker dari database
+        $apoteker = Apoteker::findOrFail(auth()->user()->id); // Anda mungkin perlu menyesuaikan cara pengambilan data apoteker dengan sistem autentikasi yang digunakan
+
+        // Tampilkan view dengan form edit profil
+        return view('apoteker.edit_profile', compact('apoteker'));
     }
 
-    // Metode untuk menampilkan halaman form untuk mengubah kata sandi
-    public function showUpdatePasswordForm()
+    public function updateProfile(Request $request)
     {
-        return view('change_password');
+        // Validasi input
+        $request->validate([
+            'nama' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255',
+            'jadwal_praktik' => 'required|string|max:255',
+            'tempat_praktik' => 'required|string|max:255',
+        ]);
+
+        // Ambil data apoteker dari database
+        $apoteker = Apoteker::findOrFail(auth()->user()->id); // Anda mungkin perlu menyesuaikan cara pengambilan data apoteker dengan sistem autentikasi yang digunakan
+
+        // Update data apoteker berdasarkan input yang diterima
+        $apoteker->update([
+            'nama' => $request->nama,
+            'email' => $request->email,
+            'jadwal_praktik' => $request->jadwal_praktik,
+            'tempat_praktik' => $request->tempat_praktik,
+        ]);
+
+        // Redirect kembali ke halaman profil dengan pesan sukses
+        return redirect()->route('apoteker.profile')->with('success', 'Profil berhasil diperbarui.');
+
     }
 
-    // Metode untuk memproses permintaan perubahan kata sandi
+    public function changePassword()
+    {
+        // Tampilkan view dengan form ganti password
+        return view('apoteker.change_password');
+    }
+
     public function updatePassword(Request $request)
     {
         // Validasi input
         $request->validate([
-            'current_password' => 'required',
-            'new_password' => 'required|string|min:8|confirmed',
+            'password' => 'required|string|min:8|confirmed',
         ]);
 
-        // Ambil data apoteker yang sedang aktif
-        $apoteker = Apoteker::find(auth()->id());
+        // Ambil data apoteker dari database
+        $apoteker = Apoteker::findOrFail(auth()->user()->id); // Anda mungkin perlu menyesuaikan cara pengambilan data apoteker dengan sistem autentikasi yang digunakan
 
-        // Periksa apakah kata sandi saat ini cocok
-        if (!Hash::check($request->current_password, $apoteker->password)) {
-            return back()->withErrors(['current_password' => 'Kata sandi saat ini salah.']);
-        }
-
-        // Enkripsi dan simpan kata sandi baru
-        $apoteker->password = Hash::make($request->new_password);
-        $apoteker->save();
-
-        // Redirect kembali dengan pesan sukses
-        return redirect()->route('profile')->with('success', 'Kata sandi berhasil diperbarui.');
-    }
-
-    // Metode untuk menampilkan daftar obat yang telah terjual
-    public function soldMedicines()
-    {
-        // Ambil semua data penjualan yang terjadi
-        $penjualan = Penjualan::all();
-
-        // Tampilkan view dengan data penjualan
-        return view('sold_medicines', compact('penjualan'));
-    }
-
-    // Metode untuk memperbarui waktu operasional apoteker
-    public function updateOperationalHours(Request $request)
-    {
-        // Validasi input
-        $request->validate([
-            'waktuOperasi' => 'required|string', // Ubah aturan validasi sesuai dengan tipe data VARCHAR
+        // Update kata sandi apoteker
+        $apoteker->update([
+            'password' => Hash::make($request->password),
         ]);
 
-        // Perbarui waktu operasional pada data apoteker yang sedang aktif
-        $apoteker = Apoteker::find(auth()->id()); // Menggunakan metode otentikasi yang sesuai
-        $apoteker->waktuOperasi = $request->waktuOperasi;
-        $apoteker->save();
+        // Redirect kembali ke halaman profil dengan pesan sukses
+        return redirect()->route('apoteker.profile')->with('success', 'Kata sandi berhasil diperbarui.');
+    }
 
-        return redirect()->back()->with('success', 'Waktu operasional berhasil diperbarui.');
+    public function barangTerjual()
+    {
+        // Ambil data apoteker dari database
+        $apoteker = Apoteker::findOrFail(auth()->user()->id); // Anda mungkin perlu menyesuaikan cara pengambilan data apoteker dengan sistem autentikasi yang digunakan
+
+        // Ambil data penjualan obat yang terkait dengan apoteker
+        $penjualanObat = $apoteker->penjualanObat;
+
+        // Tampilkan view dengan data barang terjual
+        return view('apoteker.barang_terjual', compact('penjualanObat'));
     }
 }
