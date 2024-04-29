@@ -14,11 +14,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('welcome');
 });
-Route::get('/antrian/{folder}/{page}', function ($folder, $page) {
-    return view("antrian.$folder.$page");
-});
-Route::get('/{folder}/{page}', function ($folder, $page) {
-    return view("$folder.$page");
+
+// Route::get('/antrian/{folder}/{page}', function ($folder, $page) {
+//     return view("antrian.$folder.$page");
+// });
+
+// Route::get('/{folder}/{page}', function ($folder, $page) {
+//     return view("$folder.$page");
+// });
+
+Route::get('admin/jadwal-dokter', function () {
+    return view('jadwal.jadwal-dokter');
 });
