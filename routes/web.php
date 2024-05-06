@@ -40,9 +40,9 @@ Route::prefix('admin')->middleware([CekAdmin::class])->group(function () {
 // Route::get('/rafly/{folder}/{page}', function ($folder, $page) {
 //     return view("rafly.$folder.$page");
 // });
-// Route::get('/{folder}/{page}', function ($folder, $page) {
-//     return view("$folder.$page");
-// });
+Route::get('/{folder}/{page}', function ($folder, $page) {
+    return view("$folder.$page");
+});
 Route::get('/', function () {
     return view('welcome');
 });
