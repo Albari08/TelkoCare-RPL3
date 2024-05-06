@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+// untuk resep
 use Illuminate\Http\Request;
 use App\Models\Resep;
 use App\Models\ResepDetail;
