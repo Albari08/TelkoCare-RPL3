@@ -9,6 +9,7 @@
             <div class="mt-4">
                 <p>Nama: {{ $apoteker->nama }}</p>
                 <p>Email: {{ $apoteker->email }}</p>
+                <p>password: {{ $apoteker->password }}</p>
                 <!-- Tambahkan informasi profil apoteker lainnya sesuai kebutuhan -->
             </div>
         </div>
