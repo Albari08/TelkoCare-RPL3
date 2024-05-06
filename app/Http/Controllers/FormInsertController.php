@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Users;
 use Illuminate\Support\Facades\Hash;
 
-class UserController extends Controller
+class FormInsertController extends Controller
 {
     //
     public function register(Request $request)
