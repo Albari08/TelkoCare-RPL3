@@ -2,17 +2,21 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Apoteker extends Model
+
+class Apoteker extends Authenticatable
 {
-    protected $fillable = [
-        'nama',
-        'email',
-        'jadwal_praktik',
-        'tempat_praktik',
-        'kata_sandi_baru',
-        'ulang_kata_sandi_baru'
+    use HasFactory, Notifiable;
 
-    ];
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $table = 'apotekers';
+    protected $guarded = ['id'];
 }
