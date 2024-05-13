@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class CekApoteker
+class CekDokter
 {
     /**
      * Handle an incoming request.
@@ -16,16 +16,16 @@ class CekApoteker
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (!Auth::guard('apoteker')->check()) {
-            return redirect()->route('apoteker.login');
+        if (!Auth::guard('dokter')->check()) {
+            return redirect()->route('dokter/login');
         }
         // Simpan data user pada variabel $user
-        $user = Auth::guard('apoteker')->user();
+        $user = Auth::guard('dokter')->user();
         // Jika user memiliki peran sesuai dengan yang diizinkan, lanjutkan permintaan
         if ($user) {
             return $next($request);
         }
         // Jika tidak memiliki akses, kembalikan ke halaman sebelumnya (jika ada), jika tidak, kembalikan ke halaman login
-        return redirect()->intended('apoteker/login')->with('error', 'Maaf, Anda tidak memiliki akses.');
+        return redirect()->intended('dokter/login')->with('error', 'Maaf, Anda tidak memiliki akses.');
     }
 }
