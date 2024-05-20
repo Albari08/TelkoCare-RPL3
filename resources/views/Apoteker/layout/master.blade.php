@@ -23,15 +23,16 @@
             fill: #FF0000;
         }
     </style>
+    @stack('styles')
 </head>
 
 <body class="bg-white font-Montserrat" x-data="{ sidebarOpen: true }">
     <section class="lg:flex">
         {{-- Sidebar --}}
-        @include('admin.layout.sidebar')
+        @include('apoteker.layout.sidebar')
         <section class="w-full  transition ease-out duration-500">
             {{-- navbar --}}
-            @include('admin.layout.navbar')
+            @include('apoteker.layout.navbar')
             <main>
                 <section class="px-10">
                     <div class="mb-5">
@@ -45,7 +46,7 @@
             <img src="{{ asset('asset/img/ellipse.png') }}" class="max-w-[400px]" alt="ellipse">
         </div>
     </section>
-    
+    @stack('scripts')
 </body>
 
 </html>
