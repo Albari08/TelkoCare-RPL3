@@ -19,7 +19,7 @@
     <body class="font-sans antialiased dark:bg-black dark:text-white/50">
       <div class="">
         <div class="p-8 lg:w-1/2 mx-auto">
-          <div class="bg-white rounded-t-lg p-8">
+          {{-- <div class="bg-white rounded-t-lg p-8">
             <p class="text-center text-sm text-gray-400 font-light">Sign in with</p>
             <div>
               <div class="flex items-center justify-center space-x-4 mt-3">
@@ -67,19 +67,24 @@
                 </button>
               </div>
             </div>
-          </div>
+          </div> --}}
           <div class="bg-gray-100 rounded-b-lg py-12 px-4 lg:px-24">
             <p class="text-center text-sm text-gray-500 font-light">
-              Or sign in with credentials
+              Sign In
             </p>
-            <form class="mt-6">
+            <form  class="mt-6" action="{{ route('login') }}" method="POST">
+              @csrf
               <div class="relative">
                 <input
                   class="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline"
-                  id="username"
-                  type="text"
+                  id="email"
+                  name="email"
+                  type="email"
                   placeholder="Email"
-                />
+                  required="">
+                  @error('email')
+                  <span class="text-red text-xs"> {{ $message }}</span>
+              @enderror
                 <div class="absolute left-0 inset-y-0 flex items-center">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -99,10 +104,11 @@
               <div class="relative mt-3">
                 <input
                   class="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline"
-                  id="username"
-                  type="text"
+                  id="password"
+                  name="password"
+                  type="password"
                   placeholder="Password"
-                />
+                  required>
                 <div class="absolute left-0 inset-y-0 flex items-center">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -120,11 +126,16 @@
                 <input type="checkbox" id="remember" name="remember" class="mr-3" />
                 <label for="remember">Remember me</label>
               </div>
-              <div class="flex items-center justify-center mt-8">
+              <div class="flex items-center justify-center mt-8 space-x-4">
                 <button
-                  class="text-white py-2 px-4 uppercase rounded bg-indigo-500 hover:bg-indigo-600 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5"
+                  class="text-white py-2 px-4 uppercase rounded bg-indigo-500 hover:bg-indigo-600 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5" type="submit"
                 >
                   Sign in
+                </button>
+                <button 
+                  class="text-white py-2 px-4 uppercase rounded bg-indigo-500 hover:bg-indigo-600 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5"
+                >
+                  Register
                 </button>
               </div>
             </form>

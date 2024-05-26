@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\JadwalController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
 });
 
 // Route::get('/antrian/{folder}/{page}', function ($folder, $page) {
@@ -28,3 +30,12 @@ Route::get('/', function () {
 Route::get('admin/jadwal-dokter', function () {
     return view('jadwal.jadwal-dokter');
 });
+
+
+
+Route::get('/', [AuthController::class, 'login']);
+
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/login', [AuthController::class, 'authenticate']);
+
+Route::get('/admin/jadwal', [JadwalController::class, 'index'])->name('jadwal');
