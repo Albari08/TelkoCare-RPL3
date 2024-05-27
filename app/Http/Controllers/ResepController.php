@@ -89,7 +89,7 @@ class ResepController extends Controller
         // Update the ResepDetailTemp instance with the validated data
         $resep->update($validatedData);
 
-        // Return the updated ResepDetailTemp instance
+        // Return the updated ResepDetailTemp instance with validated data
         return $resep;
     }
 
