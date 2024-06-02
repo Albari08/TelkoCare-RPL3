@@ -35,6 +35,7 @@ class JadwalDokterController extends Controller
         $dokter = Dokter::where('id', $id)->first();
         $groupedJadwalDokters = $jadwalDokters->groupBy('tanggal');
         $detailJadwal = JadwalDokter::where('id', $request->idwaktu)->first();
+        // Mengembalikan nilai
         return view('azkanoor.jadwal-dokter', compact('startDate', 'endDate', 'jadwalDokters', 'groupedJadwalDokters', 'detailJadwal', 'dokter'));
     }
     public function index($id, Request $request)
