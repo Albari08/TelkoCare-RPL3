@@ -14,28 +14,28 @@ class AntrianSeeder extends Seeder
     public function run(): void
     {
         DB::table('antrians')->insert([
-            'waktu_antrian' => "2024-04-21 23:00:00",
+            'waktu_antrian' => "2024-05-07 23:00:00",
             'nomor_antrian' => 1,
             'loket' => 2,
             'ruang_antrian' => "Ruang A",
             'user_id' => 1,
         ]);
         DB::table('antrians')->insert([
-            'waktu_antrian' => "2024-04-21 23:00:00",
+            'waktu_antrian' => "2024-05-07 23:00:00",
             'nomor_antrian' => 1,
             'loket' => 1,
             'ruang_antrian' => "Ruang A",
             'user_id' => 1,
         ]);
         DB::table('antrians')->insert([
-            'waktu_antrian' => "2024-04-21 23:00:00",
+            'waktu_antrian' => "2024-05-07 23:00:00",
             'nomor_antrian' => 2,
             'loket' => 1,
             'ruang_antrian' => "Ruang A",
             'user_id' => 2,
         ]);
         DB::table('antrians')->insert([
-            'waktu_antrian' => "2024-04-22 23:00:00",
+            'waktu_antrian' => "2024-05-22 23:00:00",
             'nomor_antrian' => 1,
             'loket' => 2,
             'ruang_antrian' => "Ruang B",

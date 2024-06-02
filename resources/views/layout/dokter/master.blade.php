@@ -18,20 +18,20 @@
             color: #FF0000;
             border-radius: 5px;
         }
-
         .activemenu svg {
             fill: #FF0000;
         }
     </style>
+    @yield('addCss')
 </head>
 
 <body class="bg-white font-Montserrat" x-data="{ sidebarOpen: true }">
     <section class="lg:flex">
         {{-- Sidebar --}}
-        @include('admin.layout.sidebar')
+        @include('layout.dokter.sidebar')
         <section class="w-full  transition ease-out duration-500">
             {{-- navbar --}}
-            @include('admin.layout.navbar')
+            @include('layout.dokter.navbar')
             <main>
                 <section class="px-10">
                     <div class="mb-5">
@@ -45,7 +45,7 @@
             <img src="{{ asset('asset/img/ellipse.png') }}" class="max-w-[400px]" alt="ellipse">
         </div>
     </section>
-    
+    @yield('addJs')
 </body>
 
 </html>
