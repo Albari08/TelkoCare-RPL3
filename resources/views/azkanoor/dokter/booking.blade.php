@@ -6,6 +6,7 @@
 @endsection
 @section('menu-booking')
     activemenu
+    <!-- active menu sidebar -->
 @endsection
 @section('content')
     <hr class=" border-[#FFF5F5] border-b-2 mb-10">
