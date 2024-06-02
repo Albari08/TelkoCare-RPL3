@@ -3,26 +3,23 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AntrianController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DokterController;
 use App\Http\Controllers\JadwalDokterController;
 use App\Http\Controllers\LogUserController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\CekAdmin;
-use App\Http\Middleware\CekPasien;
 use App\Http\Middleware\CekDokter;
+use App\Http\Middleware\CekPasien;
 use Illuminate\Support\Facades\Route;
-
-
-
-
-
-
 
 Route::prefix('pasien')->middleware([CekPasien::class])->group(function () {
     // Rafly
     Route::get('antrian', [AntrianController::class, 'index'])->name('pasien.antrian');
     Route::post('antrian', [AntrianController::class, 'create'])->name('pasien.antrian.create');
     Route::get('antrian/{id}', [AntrianController::class, 'show'])->name('pasien.antrian.detail');
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('pasien.dashboard');
+
     // End Rafly
     // Azka
     Route::get('booking', [DokterController::class, 'booking'])->name('pasien.booking');
@@ -60,9 +57,9 @@ Route::prefix('admin')->middleware([CekAdmin::class])->group(function () {
 // Route::get('/{folder}/{page}', function ($folder, $page) {
 //     return view("$folder.$page");
 // });
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 Route::get('/login', [UserController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [UserController::class, 'login']);
 Route::post('/logout', [UserController::class, 'logout'])->name('logout');

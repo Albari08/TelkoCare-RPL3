@@ -21,7 +21,7 @@
         <div>
             {{-- Menu Sidebar --}}
             <ul class="text-sm font-medium flex flex-col gap-3 text-[#A6AFCA] mb-6">
-                <li class="w-full p-2 @yield('menu-dashboard')"><a href="#" class="flex gap-3 items-center"><i><svg
+                <li class="w-full p-2 @yield('menu-dashboard')"><a href="{{ route('pasien.dashboard') }}" class="flex gap-3 items-center"><i><svg
                                 class="fill-[#A6AFCA]" width="20" height="20" viewBox="0 0 20 20" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -130,7 +130,7 @@
         <div>
             {{-- Menu Sidebar --}}
             <ul class="text-sm font-medium flex flex-col gap-3 text-[#A6AFCA] mb-6">
-                <li class="w-full p-2 @yield('menu-dashboard')"><a href="#" class="flex gap-3 items-center"><i><svg
+                <li class="w-full p-2 @yield('menu-dashboard')"><a href="{{ route('pasien.dashboard') }}" class="flex gap-3 items-center"><i><svg
                                 class="fill-[#A6AFCA]" width="20" height="20" viewBox="0 0 20 20"
                                 fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path
