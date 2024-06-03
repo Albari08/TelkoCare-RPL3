@@ -62,7 +62,7 @@
                     @enderror
                 </div>
                 <div class="mb-4">
-                    <label for="jam_tutup" class="block text-sm font-medium text-gray-700">Jam Buka</label>
+                    <label for="jam_tutup" class="block text-sm font-medium text-gray-700">Jam Tutup</label>
                     <input type="time" id="jam_tutup" name="jam_tutup" value="{{ old('jam_tutup') }}"
                         class="mt-1 p-2 w-full border rounded-md @error('jam_tutup') border-red-500 @enderror">
                     @error('jam_tutup')

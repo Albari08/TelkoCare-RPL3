@@ -14,8 +14,10 @@ class ProfileApoteker2Test extends DuskTestCase
     public function testExample(): void
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/')
-                    ->assertSee('Laravel');
+            $browser->visit('/apoteker/ubah-password')
+                    ->type('password', 'password 1')
+                    ->type('password_confirmation', 'Password')
+                    ->press('simpan');
         });
     }
 }

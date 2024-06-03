@@ -13,6 +13,7 @@ class ProfileApotekerTest extends DuskTestCase
      * @group apoteker
      */
     public function testExample(): void
+    use DatabaseMigrations;
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/apoteker/profile')
