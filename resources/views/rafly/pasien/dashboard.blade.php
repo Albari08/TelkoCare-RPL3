@@ -5,6 +5,7 @@
 @section('addJs')
     <script src='https://cdn.plot.ly/plotly-2.32.0.min.js'></script>
     <script>
+        //chart//
         var dates = @json($dates);
         var dataLoket1 = @json($dataLoket1);
         var dataLoket2 = @json($dataLoket2);
