@@ -3,7 +3,12 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Antrian;
+use App\Models\JadwalDokter;
+use App\Models\LogUser;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -17,8 +22,14 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'nama',
         'email',
+        'tanggal_lahir',
+        'tempat_lahir',
+        'nim',
+        'jenis_kelamin',
+        'nohp',
+        'alamat',
         'password',
     ];
 
@@ -43,5 +54,17 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+    public function antrians(): HasMany
+    {
+        return $this->hasMany(Antrian::class);
+    }
+    public function log_users(): HasMany
+    {
+        return $this->hasMany(LogUser::class);
+    }
+    public function jadwal_dokters(): belongsToMany
+    {
+        return $this->belongsToMany(JadwalDokter::class, 'bookings');
     }
 }
