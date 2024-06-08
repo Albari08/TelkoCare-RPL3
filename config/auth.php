@@ -44,6 +44,10 @@ return [
             'driver' => 'session',
             'provider' => 'admins',
         ],
+        'apoteker' => [
+            'driver' => 'session',
+            'provider' => 'apotekers',
+        ],
         'dokter' => [
             'driver' => 'session',
             'provider' => 'dokters',
@@ -75,6 +79,10 @@ return [
         'admins' => [
             'driver' => 'eloquent',
             'model' => App\Models\Admin::class,
+        ],
+        'apotekers' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Apoteker::class,
         ],
         'dokters' => [
             'driver' => 'eloquent',
