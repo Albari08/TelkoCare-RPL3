@@ -96,6 +96,10 @@
                         </svg>
                     </i>Profile</a>
             </div>
+            <form action="{{ route('logout-admin') }}" method="post">
+                        @csrf
+                        <button type="submit">logout</button>
+                    </form>
         </div>
     </div>
 
