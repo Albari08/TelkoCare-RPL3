@@ -26,6 +26,7 @@ class JadwalDokterSeeder extends Seeder
                 'updated_at' => Date::now(),
             ]);
         }
+
         // Insert jadwal dokter untuk dokter dengan id 1 dan tanggal yang sama
         for ($i = 0; $i < 4; $i++) {
             DB::table('jadwal_dokters')->insert([

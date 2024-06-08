@@ -67,4 +67,10 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(JadwalDokter::class, 'bookings');
     }
+
+
+    public function gambar()
+    {
+        return asset('asset/img/admin.png');
+    }
 }
