@@ -297,7 +297,7 @@ trait MakesHttpRequests
     }
 
     /**
-     * Set the referer header and previous URL session value in order to simulate a previous request.
+     * Set the referer header and previous URL session value from a given URL in order to simulate a previous request.
      *
      * @param  string  $url
      * @return $this
@@ -307,6 +307,18 @@ trait MakesHttpRequests
         $this->app['session']->setPreviousUrl($url);
 
         return $this->withHeader('referer', $url);
+    }
+
+    /**
+     * Set the referer header and previous URL session value from a given route in order to simulate a previous request.
+     *
+     * @param  string  $name
+     * @param  mixed  $parameters
+     * @return $this
+     */
+    public function fromRoute(string $name, $parameters = [])
+    {
+        return $this->from($this->app['url']->route($name, $parameters));
     }
 
     /**
@@ -571,7 +583,7 @@ trait MakesHttpRequests
         );
 
         $response = $kernel->handle(
-            $request = Request::createFromBase($symfonyRequest)
+            $request = $this->createTestRequest($symfonyRequest)
         );
 
         $kernel->terminate($request, $response);
@@ -580,7 +592,7 @@ trait MakesHttpRequests
             $response = $this->followRedirects($response);
         }
 
-        return static::$latestResponse = $this->createTestResponse($response);
+        return static::$latestResponse = $this->createTestResponse($response, $request);
     }
 
     /**
@@ -699,14 +711,26 @@ trait MakesHttpRequests
     }
 
     /**
+     * Create the request instance used for testing from the given Symfony request.
+     *
+     * @param  \Symfony\Component\HttpFoundation\Request  $symfonyRequest
+     * @return \Illuminate\Http\Request
+     */
+    protected function createTestRequest($symfonyRequest)
+    {
+        return Request::createFromBase($symfonyRequest);
+    }
+
+    /**
      * Create the test response instance from the given response.
      *
      * @param  \Illuminate\Http\Response  $response
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Testing\TestResponse
      */
-    protected function createTestResponse($response)
+    protected function createTestResponse($response, $request)
     {
-        return tap(TestResponse::fromBaseResponse($response), function ($response) {
+        return tap(TestResponse::fromBaseResponse($response, $request), function ($response) {
             $response->withExceptions(
                 $this->app->bound(LoggedExceptionCollection::class)
                     ? $this->app->make(LoggedExceptionCollection::class)
