@@ -10,7 +10,7 @@ class UserAuthenticate
     public function handle($request, Closure $next)
     {
         if (!Auth::guard('user')->check()) {
-            return redirect('/login');
+            return redirect()->route('user.login');
         }
 
         return $next($request);

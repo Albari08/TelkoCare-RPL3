@@ -9,6 +9,7 @@ use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MedicalRecordController;
 
+
 // Default route
 Route::get('/', function () {
     return redirect()->route('user.dashboard');
@@ -33,6 +34,7 @@ Route::middleware(['auth:doctor'])->group(function () {
 });
 
 // User routes (patients)
+Route::middleware('auth:user')->get('api/user-data', [UserController::class, 'getUserData']);
 Route::middleware(['auth:user'])->group(function () {
     Route::get('/user/dashboard', [DashboardController::class, 'userDashboard'])->name('user.dashboard');
     Route::get('users/{id}', [UserController::class, 'show']);
@@ -53,3 +55,9 @@ Route::post('doctor/logout', [DoctorLoginController::class, 'logout'])->name('do
 Route::get('user/login', [UserLoginController::class, 'showLoginForm'])->name('user.login');
 Route::post('user/login', [UserLoginController::class, 'login'])->name('user.login.submit');
 Route::post('user/logout', [UserLoginController::class, 'logout'])->name('user.logout');
+
+// Fallback login route
+Route::get('login', function () {
+    return redirect()->route('user.login');
+})->name('login');
+

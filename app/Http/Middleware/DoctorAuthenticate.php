@@ -10,7 +10,7 @@ class DoctorAuthenticate
     public function handle($request, Closure $next)
     {
         if (!Auth::guard('doctor')->check()) {
-            return redirect('/login');
+            return redirect()->route('doctor.login');
         }
 
         return $next($request);
