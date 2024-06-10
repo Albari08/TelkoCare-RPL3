@@ -15,12 +15,8 @@ class MedicalRecordController extends Controller
 
     public function store(Request $request)
     {
-        if (auth()->user()->isDoctor()) {
-            $record = MedicalRecord::create($request->all());
-            return response()->json($record, 201);
-        } else {
-            return response()->json(['error' => 'Unauthorized'], 403);
-        }
+        $record = MedicalRecord::create($request->all());
+        return response()->json($record, 201);
     }
 
     public function show($id)
@@ -31,22 +27,14 @@ class MedicalRecordController extends Controller
 
     public function update(Request $request, $id)
     {
-        if (auth()->user()->isDoctor()) {
-            $record = MedicalRecord::find($id);
-            $record->update($request->all());
-            return response()->json($record);
-        } else {
-            return response()->json(['error' => 'Unauthorized'], 403);
-        }
+        $record = MedicalRecord::find($id);
+        $record->update($request->all());
+        return response()->json($record);
     }
 
     public function destroy($id)
     {
-        if (auth()->user()->isAdmin()) {
-            MedicalRecord::destroy($id);
-            return response()->json(null, 204);
-        } else {
-            return response()->json(['error' => 'Unauthorized'], 403);
-        }
+        MedicalRecord::destroy($id);
+        return response()->json(null, 204);
     }
 }

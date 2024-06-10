@@ -1,3 +1,7 @@
+import 'bootstrap';
+import 'popper.js';
+import $ from 'jquery';
+
 window._ = require('lodash');
 
 try {
