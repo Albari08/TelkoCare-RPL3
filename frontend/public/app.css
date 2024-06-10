@@ -1,0 +1,215 @@
+/* Import Raleway font */
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap');
+
+/* General Styles */
+body {
+    font-family: 'Raleway', sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    color: #000000;
+}
+
+body::before,
+body::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 0, 0, 0.2), rgba(255, 0, 0, 0));
+    width: 200px;
+    height: 200px;
+    z-index: -1;
+}
+
+body::before {
+    top: 10%;
+    left: 10%;
+}
+
+body::after {
+    bottom: 10%;
+    right: 10%;
+}
+
+.dashboard-container::before,
+.dashboard-container::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 0, 255, 0.2), rgba(0, 0, 255, 0));
+    width: 150px;
+    height: 150px;
+    z-index: -1;
+}
+
+.dashboard-container::before {
+    top: 30%;
+    left: 70%;
+}
+
+.dashboard-container::after {
+    bottom: 20%;
+    right: 30%;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 250px;
+    background-color: #fff;
+    padding: 20px;
+    border-right: 1px solid #ddd;
+    height: 100vh;
+    position: relative;
+}
+
+.sidebar::before,
+.sidebar::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 255, 0, 0.2), rgba(0, 255, 0, 0));
+    width: 100px;
+    height: 100px;
+    z-index: -1;
+}
+
+.sidebar::before {
+    top: 20%;
+    left: 50%;
+}
+
+.sidebar::after {
+    bottom: 20%;
+    right: 10%;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    padding: 15px 10px;
+    font-size: 16px;
+    color: #000000;
+    cursor: pointer;
+}
+
+.sidebar ul li.active {
+    background-color: #f8d7da;
+    color: #c82333;
+}
+
+/* Content Styles */
+.content {
+    flex-grow: 1;
+    padding: 20px;
+    position: relative;
+}
+
+.content::before,
+.content::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 0, 0.2), rgba(255, 255, 0, 0));
+    width: 100px;
+    height: 100px;
+    z-index: -1;
+}
+
+.content::before {
+    top: 10%;
+    left: 80%;
+}
+
+.content::after {
+    bottom: 15%;
+    right: 25%;
+}
+
+h1 {
+    font-size: 24px;
+    color: #000000;
+    margin-bottom: 20px;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.avatar {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    margin-right: 20px;
+}
+
+.profile-details p {
+    margin: 5px 0;
+    color: #000000;
+    font-size: 16px;
+}
+
+.important-notes {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-left: auto;
+    width: 300px;
+    background-color: #fff;
+}
+
+.important-notes h3 {
+    margin-top: 0;
+}
+
+.important-notes p {
+    margin: 0;
+    color: #c82333;
+}
+
+.medical-records {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+}
+
+.medical-records h2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 20px;
+    margin-top: 0;
+}
+
+.print-button {
+    background-color: #c82333;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 3px;
+}
+
+.record {
+    margin-top: 20px;
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+}
+
+.record h3 {
+    margin: 0;
+    color: #000000;
+    font-size: 18px;
+}
+
+.record-details p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #666;
+}

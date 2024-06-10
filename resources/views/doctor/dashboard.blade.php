@@ -2,10 +2,10 @@
 <html>
 <head>
     <title>Doctor Dashboard</title>
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="css/style.css" >
 </head>
 <body>
     <div id="doctor-dashboard"></div>
-    <script src="{{ mix('js/app.js') }}"></script>
+    <script src='js/app.js'></script>
 </body>
 </html>

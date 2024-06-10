@@ -1,0 +1,35 @@
+// Variables
+$primary-color: #3490dc;
+$secondary-color: #ffed4a;
+$font-stack: 'Helvetica, sans-serif';
+
+// Styling
+body {
+  font-family: $font-stack;
+  color: $primary-color;
+}
+
+// Nested
+nav {
+  background: $secondary-color;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+      display: inline-block;
+      margin-right: 10px;
+    }
+  }
+}
+
+// Mixing
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+          border-radius: $radius;
+}
+
+.box { @include border-radius(10px); }
