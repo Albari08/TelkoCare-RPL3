@@ -17,7 +17,7 @@ class CekDokter
     public function handle(Request $request, Closure $next): Response
     {
         if (!Auth::guard('dokter')->check()) {
-            return redirect()->route('dokter/login');
+            return redirect()->route('dokter.login');
         }
         // Simpan data user pada variabel $user
         $user = Auth::guard('dokter')->user();
