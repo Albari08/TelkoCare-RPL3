@@ -4,19 +4,27 @@ import axios from 'axios';
 
 const UserDashboard = () => {
     const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         axios.get('/api/user-data')
             .then(response => {
                 setUser(response.data);
+                setLoading(false);
             })
             .catch(error => {
-                console.error('There was an error fetching the user data!', error);
+                setError('There was an error fetching the user data!');
+                setLoading(false);
             });
     }, []);
 
-    if (!user) {
+    if (loading) {
         return <div>Loading...</div>;
+    }
+
+    if (error) {
+        return <div>{error}</div>;
     }
 
     return (

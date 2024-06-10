@@ -9,14 +9,13 @@ use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MedicalRecordController;
 
-
 // Default route
 Route::get('/', function () {
     return redirect()->route('user.dashboard');
 });
 
 // Admin routes
-Route::middleware(['auth:admin'])->group(function () {
+Route::middleware(['auth.admin'])->group(function () {
     Route::get('/admin/dashboard', [DashboardController::class, 'adminDashboard'])->name('admin.dashboard');
     Route::resource('admins', AdminController::class);
     Route::resource('medical-records', MedicalRecordController::class);
@@ -25,7 +24,7 @@ Route::middleware(['auth:admin'])->group(function () {
 });
 
 // Doctor routes
-Route::middleware(['auth:doctor'])->group(function () {
+Route::middleware(['auth.doctor'])->group(function () {
     Route::get('/doctor/dashboard', [DashboardController::class, 'doctorDashboard'])->name('doctor.dashboard');
     Route::get('medical-records', [MedicalRecordController::class, 'index']);
     Route::get('medical-records/{id}', [MedicalRecordController::class, 'show']);
@@ -34,8 +33,7 @@ Route::middleware(['auth:doctor'])->group(function () {
 });
 
 // User routes (patients)
-Route::middleware('auth:user')->get('api/user-data', [UserController::class, 'getUserData']);
-Route::middleware(['auth:user'])->group(function () {
+Route::middleware(['auth.user'])->group(function () {
     Route::get('/user/dashboard', [DashboardController::class, 'userDashboard'])->name('user.dashboard');
     Route::get('users/{id}', [UserController::class, 'show']);
     Route::get('medical-records/{id}', [MedicalRecordController::class, 'show']);
@@ -55,9 +53,3 @@ Route::post('doctor/logout', [DoctorLoginController::class, 'logout'])->name('do
 Route::get('user/login', [UserLoginController::class, 'showLoginForm'])->name('user.login');
 Route::post('user/login', [UserLoginController::class, 'login'])->name('user.login.submit');
 Route::post('user/logout', [UserLoginController::class, 'logout'])->name('user.logout');
-
-// Fallback login route
-Route::get('login', function () {
-    return redirect()->route('user.login');
-})->name('login');
-
