@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-// untuk resep
+
 use Illuminate\Http\Request;
 use App\Models\Resep;
 use App\Models\ResepDetail;
@@ -89,7 +89,7 @@ class ResepController extends Controller
         // Update the ResepDetailTemp instance with the validated data
         $resep->update($validatedData);
 
-        // Return the updated ResepDetailTemp instance with validated data
+        // Return the updated ResepDetailTemp instance
         return $resep;
     }
 
