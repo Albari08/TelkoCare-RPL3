@@ -136,10 +136,7 @@
                                     </div>
                                 </div>
                                 <div class="md:col-span-1 flex items-center justify-center">
-                                    <a href="#"
-                                        class="border border-red-500 text-red-500 hover:bg-red-500 hover:text-white font-bold py-2 px-4 rounded">
-                                        Lihat Detail
-                                    </a>
+    
                                 </div>
                             </div>
                         </div>
