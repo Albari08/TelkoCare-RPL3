@@ -9,7 +9,7 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id();
             $table->string('nama');
             $table->date('tanggal_lahir');
             $table->string('tempat_lahir');

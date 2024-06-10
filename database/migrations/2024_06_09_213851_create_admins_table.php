@@ -9,7 +9,7 @@ class CreateAdminsTable extends Migration
     public function up()
     {
         Schema::create('admins', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id();
             $table->string('nama');
             $table->text('alamat');
             $table->string('email')->unique();
@@ -24,4 +24,4 @@ class CreateAdminsTable extends Migration
     {
         Schema::dropIfExists('admins');
     }
-};
+}

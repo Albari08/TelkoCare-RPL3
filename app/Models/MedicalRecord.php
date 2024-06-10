@@ -2,11 +2,20 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class MedicalRecord extends Model
 {
-    protected $fillable = ['user_id', 'doctor_id', 'date', 'diagnosis', 'intervention', 'medication'];
+    use HasFactory;
+
+    protected $fillable = [
+        'user_id',
+        'doctor_id',
+        'diagnosis',
+        'intervention',
+        'medication'
+    ];
 
     public function user()
     {
@@ -16,5 +25,15 @@ class MedicalRecord extends Model
     public function doctor()
     {
         return $this->belongsTo(Doctor::class);
+    }
+
+    public function notes()
+    {
+        return $this->hasMany(Note::class);
+    }
+
+    public function interventions()
+    {
+        return $this->hasMany(Intervention::class);
     }
 }

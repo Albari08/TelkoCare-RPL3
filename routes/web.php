@@ -1,22 +1,28 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\CalendarController;
 
-Route::get('/', function () {
-    return view('medicalrecord');
+Route::middleware(['auth:admin'])->group(function () {
+    Route::get('/admin/dashboard', [DashboardController::class, 'adminDashboard']);
+    Route::resource('admins', AdminController::class);
+    Route::resource('medical-records', MedicalRecordController::class);
+    Route::resource('users', UserController::class);
+    Route::resource('doctors', DoctorController::class);
 });
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// });
+Route::middleware(['auth:doctor'])->group(function () {
+    Route::get('/doctor/dashboard', [DashboardController::class, 'doctorDashboard']);
+    Route::get('medical-records', [MedicalRecordController::class, 'index']);
+    Route::get('medical-records/{id}', [MedicalRecordController::class, 'show']);
+    Route::post('medical-records', [MedicalRecordController::class, 'store']);
+    Route::put('medical-records/{id}', [MedicalRecordController::class, 'update']);
+});
 
-
-// Route::get('/dashboard/calendar', function () {
-//     return view('/dashboard/calendar');
-// });
-
-Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
-
-Route::get('dashboard/calendar', [CalendarController::class, 'index'])->name('calendar');
+Route::middleware(['auth:user'])->group(function () {
+    Route::get('/user/dashboard', [DashboardController::class, 'userDashboard']);
+    Route::get('users/{id}', [UserController::class, 'show']);
+    Route::get('medical-records/{id}', [MedicalRecordController::class, 'show']);
+});

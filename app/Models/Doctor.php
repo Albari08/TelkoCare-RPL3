@@ -2,16 +2,25 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 
 class Doctor extends Authenticatable
 {
-    use Notifiable;
+    use HasFactory;
 
-    protected $guard = 'doctor';
+    protected $fillable = [
+        'nama',
+        'alamat',
+        'nohp',
+        'keahlian',
+        'profile',
+        'email',
+        'password',
+    ];
 
-    protected $fillable = ['nama', 'alamat', 'nohp', 'keahlian', 'profile', 'email', 'password'];
-
-    protected $hidden = ['password', 'remember_token'];
+    public function medicalRecords()
+    {
+        return $this->hasMany(MedicalRecord::class);
+    }
 }
