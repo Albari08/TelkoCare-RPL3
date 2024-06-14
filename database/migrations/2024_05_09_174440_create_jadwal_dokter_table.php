@@ -11,9 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::dropIfExists('jadwal_dokters');
-
-        Schema::create('jadwal_dokters', function (Blueprint $table) {
+        Schema::create('jadwal_dokter', function (Blueprint $table) {
             $table->id();
             $table->string('hari');
             $table->time('jam_buka');

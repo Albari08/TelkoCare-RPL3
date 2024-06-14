@@ -8,12 +8,13 @@ use Tests\DuskTestCase;
 
 class ProfileApotekerTest extends DuskTestCase
 {
+    use DatabaseMigrations;
+
     /**
      * A Dusk test example.
      * @group apoteker
      */
     public function testExample(): void
-    use DatabaseMigrations;
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/apoteker/profile')

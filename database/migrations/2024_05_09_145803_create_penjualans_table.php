@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('jenis_pembayaran');
             $table->timestamps();
         });
+
         Schema::create('penjualan_detail', function (Blueprint $table) {
             $table->id();
             $table->foreignId('penjualan_id')->constrained('penjualan')->cascadeOnDelete();
@@ -31,6 +32,7 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::dropIfExists('penjualan_detail');
         Schema::dropIfExists('penjualan');
     }
 };
